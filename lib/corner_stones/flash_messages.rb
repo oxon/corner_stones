@@ -16,7 +16,7 @@ module CornerStones
     end
 
     def message(type, text)
-      messages[type].detect {|message| message[:text] == text}
+      messages[type].detect {|message| message[:text].include?(text)}
     end
 
     def messages
@@ -26,7 +26,7 @@ module CornerStones
           Array(@options[:ignore_selectors]).each do |ignore_selector|
             native.css(ignore_selector).remove
           end
-          present_messages[type] << {text: native.text.strip}
+          present_messages[type] << {text: message.text.strip}
         end
         present_messages
       end

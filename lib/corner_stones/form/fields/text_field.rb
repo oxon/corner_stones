@@ -1,3 +1,5 @@
+require 'xpath/html'
+
 module CornerStones
   class Form
     module Fields
